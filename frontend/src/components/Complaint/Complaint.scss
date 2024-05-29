@@ -1,0 +1,28 @@
+.complaintItem{
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1{
+        text-align: center;
+    }
+    p{
+        text-align: center;
+    }
+    button{
+        width: 100px;
+        background-color: black;
+        color: white;
+        padding: 5px;
+    }
+    a{
+        text-decoration: none;
+        cursor: pointer;
+        width: 100px;
+        background-color: black;
+        color: white;
+        padding: 5px;
+    }
+}

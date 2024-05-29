@@ -1,0 +1,14 @@
+.navContainer{
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+
+    h1{
+        color: white;
+        text-align: center;
+    }
+}
