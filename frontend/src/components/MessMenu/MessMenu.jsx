@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
-
+import './MessMenu.scss'
 
 const daysOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
 const MessMenu = () => {
-    const { user } = useSelector(state => state.user);
+    const { user} = useSelector(state => state.user);
     const messMenu = user.hostel.messMenu;
     return (
-        <div>
+        <div className="MessMenu">
             <h1>Mess Menu</h1>
             <table border="1">
                 <thead>

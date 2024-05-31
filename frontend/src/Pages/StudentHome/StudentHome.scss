@@ -1,0 +1,33 @@
+// StudentHome.scss
+
+.container {
+  margin: 20px;
+}
+
+.innerContainer {
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.tableContainer {
+  margin-top: 20px;
+}
+
+.tableContainer a {
+  display: block;
+  margin-bottom: 10px;
+  color: #007bff; /* Link color */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.tableContainer a:hover {
+  text-decoration: underline;
+}

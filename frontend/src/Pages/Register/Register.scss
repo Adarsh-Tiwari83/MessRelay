@@ -1,42 +1,67 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  background-color: #f5f5f5;
+.registerContainer {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
 
-  .formContainer {
+.registerContainer h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.registerFormContainer {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    width: 500px;
-    margin-bottom: 10px;
-    .formGroup {
-      height: 50px;
-      width: 500px;
-      margin-bottom: 10px;
-      input,select {
-        border: none;
-        width: 100%;
-        height: 100%;
-        padding: 5px;
-        border-bottom: 1px solid black;
-        font-size: larger;
-        outline: none;
-      }
-    }
-    button {
-      background-color: black;
-      border: none;
-      width: 100%;
-      height: 40px;
-      color: white;
-      font-size: large;
-      margin-bottom: 5px;
-      cursor: pointer;
-    }
-  }
+}
+
+form {
+    width: 100%;
+    max-width: 400px;
+}
+
+.registerFormGroup {
+    margin-bottom: 20px;
+}
+
+.registerFormGroup input,
+.registerFormGroup select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin: 0 10px;
+}
+
+.registerSubmitButton {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.registerSubmitButton:hover {
+    background-color: #0056b3;
+}
+
+.registerContainer p {
+    margin-top: 10px;
+    color: #333;
+}
+
+.registerContainer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.registerContainer a:hover {
+    text-decoration: underline;
 }

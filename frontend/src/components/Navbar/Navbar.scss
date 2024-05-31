@@ -1,14 +1,40 @@
-.navContainer{
-    height: 70px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
+// .navContainer{
+//     height: 70px;
+//     display: flex;
+//     width: 100%;
+//     align-items: center;
+//     justify-content: center;
+//     background-color: black;
+//     h1{
+//         color: white;
+//         text-align: center;
+//         width: 50%;
+//     }
+// }
+// Navbar.scss
 
-    h1{
-        color: white;
-        text-align: center;
-    }
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333; /* Navbar background color */
+  color: #fff; /* Text color */
+  padding: 10px 20px;
+}
+
+.navContainer h1 {
+  margin: 0;
+}
+
+.navContainer button {
+  background-color: transparent;
+  border: none;
+  color: #fff; /* Button text color */
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.navContainer button:hover {
+  text-decoration: underline;
 }

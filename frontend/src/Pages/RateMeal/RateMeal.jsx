@@ -1,7 +1,7 @@
 
 import { useDispatch, useSelector } from 'react-redux';
 import { loadUser, rateMeal } from '../../Actions/user';
-
+import './RateMeal.scss';
 const RateMeal = () => {
     const { user } = useSelector(state => state.user);
     const today = new Date().toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase(); // Get today's day in lowercase format

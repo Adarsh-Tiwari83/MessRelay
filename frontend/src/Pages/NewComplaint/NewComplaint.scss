@@ -1,0 +1,64 @@
+// NewComplaint.scss
+
+.newcontainer {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.backButton {
+  background-color: transparent;
+  color: #007bff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.backButton:hover {
+  text-decoration: underline;
+}
+
+.formContainer {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formContainer input[type="text"],
+.formContainer textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.formContainer button[type="submit"] {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.formContainer button[type="submit"]:hover {
+  background-color: #0056b3;
+}

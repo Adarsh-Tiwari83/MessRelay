@@ -27,15 +27,15 @@ function App() {
     loadComplaints();
   },[]);
 
-  const { isAuthenticated,loading } = useSelector((state) => state.user);
+  const { isAuthenticated,loading} = useSelector((state) => state.user);
   console.log("Loading",loading);
   return (
     <>
       <Navbar/>
       <Router>
         <Routes>
-          <Route path="/" element={isAuthenticated?<StudentHome/>:<Login />} />
-          <Route path="/register" element={isAuthenticated ? <StudentHome /> : <Register/>} />
+          <Route path="/" element={(isAuthenticated)?<StudentHome/>:<Login />} />
+          <Route path="/register" element={(isAuthenticated) ? <StudentHome /> : <Register/>} />
           <Route path="/viewComplaints" element={isAuthenticated ? <ViewComplaints /> : <Login/>} />
           <Route path="/newComplaint" element={isAuthenticated ? < NewComplaint/> : <Login/>} />
           <Route path="/rateMeal" element={isAuthenticated ? < RateMeal/> : <Login/>} />

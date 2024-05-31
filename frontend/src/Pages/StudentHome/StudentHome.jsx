@@ -2,6 +2,7 @@ import { useSelector} from 'react-redux'
 import './StudentHome.scss'
 import MessMenu from '../../components/MessMenu/MessMenu';
 import { Link } from 'react-router-dom';
+import Loader from '../../components/Loader/Loader';
 
 
 const StudentHome = () => {
@@ -9,13 +10,13 @@ const StudentHome = () => {
   console.log(user);
   return (
     loading ? (
-      <h1>Loading...</h1>
+      <Loader />
     ) : (
       <div className='container'>
         <div className="innerContainer">
           <h1>{user.hostel.name}</h1>
           <div className="tableContainer">
-            <MessMenu/>
+            <MessMenu />
             <Link to="/viewComplaints">Complaints</Link>
             <Link to="/rateMeal">Rate Today&apos;s meal</Link>
           </div>

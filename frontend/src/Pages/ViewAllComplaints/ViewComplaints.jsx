@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import Complaint from "../../components/Complaint/Complaint";
 import { Link } from "react-router-dom";
 
-
+import './ViewComplaints.scss'
 
 const ViewComplaints = () => {
     const {complaints}=useSelector(state=>state.complaint);

@@ -1,28 +1,65 @@
-.complaintItem{
-    padding: 10px;
-    border: 1px solid #ccc;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    h1{
-        text-align: center;
-    }
-    p{
-        text-align: center;
-    }
-    button{
-        width: 100px;
-        background-color: black;
-        color: white;
-        padding: 5px;
-    }
-    a{
-        text-decoration: none;
-        cursor: pointer;
-        width: 100px;
-        background-color: black;
-        color: white;
-        padding: 5px;
-    }
+// .complaintItem{
+//     padding: 10px;
+//     border: 1px solid #ccc;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     h1{
+//         text-align: center;
+//     }
+//     p{
+//         text-align: center;
+//     }
+//     button{
+//         width: 100px;
+//         background-color: black;
+//         color: white;
+//         padding: 5px;
+//     }
+//     a{
+//         text-decoration: none;
+//         cursor: pointer;
+//         width: 100px;
+//         background-color: black;
+//         color: white;
+//         padding: 5px;
+//     }
+// }
+// Complaint.scss
+
+// Complaint.scss
+
+.complaintItem {
+  background-color: #ffffff; /* Background color */
+  border: 1px solid #ccc; /* Border color */
+  border-radius: 5px; /* Border radius */
+  padding: 20px; /* Padding */
+  margin-bottom: 20px; /* Margin bottom */
+}
+
+.complaintItem h1 {
+  font-size: 20px; /* Title font size */
+  margin-bottom: 10px; /* Title margin bottom */
+}
+
+.complaintItem p {
+  margin-bottom: 15px; /* Description margin bottom */
+}
+
+.btnwrapper {
+  margin-top: 10px; /* Button wrapper margin top */
+}
+
+.btnwrapper button {
+  margin-right: 10px; /* Button margin right */
+  background-color: #ffffff; /* Button background color */
+  border: 1px solid #ccc; /* Button border color */
+  border-radius: 5px; /* Button border radius */
+  padding: 5px 10px; /* Button padding */
+  cursor: pointer; /* Cursor */
+}
+
+.btnwrapper button:hover {
+  background-color: #f0f0f0; /* Button hover background color */
 }
