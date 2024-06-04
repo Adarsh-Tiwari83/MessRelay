@@ -1,11 +1,10 @@
-import { useSelector } from "react-redux";
+
 import './MessMenu.scss'
 
-const daysOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
-const MessMenu = () => {
-    const { user} = useSelector(state => state.user);
-    const messMenu = user.hostel.messMenu;
+
+const MessMenu = ({messMenu}) => {
+    const daysOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
     return (
         <div className="MessMenu">
             <h1>Mess Menu</h1>
@@ -20,13 +19,13 @@ const MessMenu = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {daysOfWeek.map(day => (
+                    {daysOfWeek?.map(day => (
                         <tr key={day}>
-                            <td>{day.charAt(0).toUpperCase() + day.slice(1)}</td>
-                            <td>{messMenu[day].breakfast.items.join(", ")}</td>
-                            <td>{messMenu[day].lunch.items.join(", ")}</td>
-                            <td>{messMenu[day].snacks.items.join(", ")}</td>
-                            <td>{messMenu[day].dinner.items.join(", ")}</td>
+                            <td>{day?.charAt(0).toUpperCase() + day?.slice(1)}</td>
+                            <td>{messMenu[day]?.breakfast?.items?.join(", ")}</td>
+                            <td>{messMenu[day]?.lunch?.items?.join(", ")}</td>
+                            <td>{messMenu[day]?.snacks?.items?.join(", ")}</td>
+                            <td>{messMenu[day]?.dinner?.items?.join(", ")}</td>
                         </tr>
                     ))}
                 </tbody>

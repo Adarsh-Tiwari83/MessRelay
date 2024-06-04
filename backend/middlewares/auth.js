@@ -14,3 +14,14 @@ exports.isAuthenticated = async (req, res, next) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.isAdmin = async (req, res, next) => {
+  try{
+    if(req.user.role !== 'Admin'){
+      return res.status(403).json({success:false, message: 'Forbidden'});
+    }
+    next();
+  }catch(error){
+    res.status(500).json({success:false, message: error.message });
+  }
+}

@@ -29,6 +29,7 @@ resetRatingsCronJob();
 const port = process.env.PORT;
 
 app.use("/api/v1/student", require("./routes/StudentRoute"));
+app.use("/api/v1/admin", require("./routes/AdminRoute"));
 
 app.get("/", (req, res) => {
   res.send("Hello World");

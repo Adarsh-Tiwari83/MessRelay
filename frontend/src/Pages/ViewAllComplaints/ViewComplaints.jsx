@@ -6,7 +6,6 @@ import './ViewComplaints.scss'
 
 const ViewComplaints = () => {
     const {complaints}=useSelector(state=>state.complaint);
-    console.log(complaints);
     
   return (
     <div className="complaintContainer">

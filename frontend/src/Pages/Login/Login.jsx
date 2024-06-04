@@ -2,20 +2,19 @@ import { useState } from 'react';
 import './Login.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../Actions/user';
-import { useNavigate } from 'react-router-dom';
+
 import Loader from '../../components/Loader/Loader';
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const { loading } = useSelector(state => state.user);
-  const navigate = useNavigate();
-
   const submitHandler = async (e) => {
     e.preventDefault();
     await dispatch(loginUser(email, password));
-    navigate('/');
+    window.location.reload();
   };
 
   return (
