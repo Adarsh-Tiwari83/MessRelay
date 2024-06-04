@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './Register.scss';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../Actions/user';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const [email, setEmail] = useState('');
@@ -10,9 +11,11 @@ const Register = () => {
     const [hostel, setHostel] = useState('');
     const [name, setName] = useState('');
     const dispatch = useDispatch();
+    const navigate=useNavigate();
     const formHandler = (e) => {
         e.preventDefault();
         dispatch(registerUser(name, email, password, role, hostel));
+        navigate('/');
     };
 
     return (

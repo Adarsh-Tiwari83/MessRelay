@@ -97,7 +97,6 @@ exports.deleteHostel = async (req, res) => {
         // Send a success response with the deleted hostel
         res.status(200).json({
             success: true,
-            hostel,
             message: "Hostel deleted successfully",
         });
     }catch(error){

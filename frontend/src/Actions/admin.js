@@ -60,6 +60,7 @@ export const updateHostel = (id, name, warden, accountant, messMenu) => async (d
             withCredentials: true,
           }
         );
+        console.log(data.message);
         dispatch(UpdateHostelSuccess(data.message));
     } catch (error) {
         dispatch(UpdateHostelFailure(error.response.data.message));
@@ -72,6 +73,7 @@ export const deleteHostel = (id) => async (dispatch) => {
         const { data } = await axios.delete(`/api/v1/admin/hostel/${id}`, {
           withCredentials: true,
         });
+        console.log(data.message);
         dispatch(DeleteHostelSuccess(data.message));
     } catch (error) {
         dispatch(DeleteHostelFailure(error.response.data.message));

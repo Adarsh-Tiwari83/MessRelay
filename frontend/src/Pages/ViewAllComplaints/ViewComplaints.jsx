@@ -1,12 +1,19 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Complaint from "../../components/Complaint/Complaint";
 import { Link } from "react-router-dom";
 
 import './ViewComplaints.scss'
+import { useEffect } from "react";
+import { viewAllComplaints } from "../../Actions/complaint";
+import { loadUser } from "../../Actions/user";
 
 const ViewComplaints = () => {
     const {complaints}=useSelector(state=>state.complaint);
-    
+    const dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(loadUser());
+      dispatch(viewAllComplaints());
+    },[])
   return (
     <div className="complaintContainer">
       {complaints && complaints.map((complaint)=>(

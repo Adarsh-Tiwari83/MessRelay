@@ -16,22 +16,20 @@ import AdminRegister from './Pages/AdminRegister/AdminRegister'
 import CreateHostel from './Pages/CreateHostel/CreateHostel';
 import UpdateHostel from './Pages/UpdateHostel/UpdateHostel';
 import ViewAllHostels from './Pages/ViewAllHostels/ViewAllHostels'
-
 import axios from 'axios'
 axios.defaults.baseURL = 'http://localhost:3000';
 
 function App() {
   const [initialLoad, setInitialLoad] = useState(true);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-      dispatch(loadUser());
-      dispatch(viewAllComplaints());
-      setInitialLoad(false);
-  }, [dispatch]);
-  const { isAuthenticated } = useSelector((state) => state.user);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(loadUser());
+        dispatch(viewAllComplaints());
+        setInitialLoad(false);
+    }, [])
+  const { isAuthenticated} = useSelector((state) => state.user);
     return (
-    initialLoad ? (<Loader />) :
+    initialLoad?<Loader/>:
     (<>
       <Navbar/>
       <Router>

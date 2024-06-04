@@ -1,13 +1,21 @@
-import { useSelector} from 'react-redux'
+import { useDispatch, useSelector} from 'react-redux'
 import './StudentHome.scss'
 import MessMenu from '../../components/MessMenu/MessMenu';
 import { Link } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
 import Typewriter from 'typewriter-effect';
+import { useEffect } from 'react';
+import { loadUser } from '../../Actions/user';
+import { viewAllComplaints } from '../../Actions/complaint';
 
 const StudentHome = () => {
-  const { user, loading } = useSelector(state => state.user);
+  const { user,loading } = useSelector(state => state.user);
+  const dispatch = useDispatch();
   console.log(user);
+  useEffect(() => {
+    dispatch(loadUser());
+    dispatch(viewAllComplaints());
+  }, [dispatch]);
   return (
     loading ? (
       <Loader />

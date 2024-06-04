@@ -14,7 +14,6 @@ const Login = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     await dispatch(loginUser(email, password));
-    window.location.reload();
   };
 
   return (
