@@ -6,7 +6,6 @@ import { registerUser } from '../../Actions/user';
 const AdminRegister = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [role, setRole] = useState('');
     const [name, setName] = useState('');
     const dispatch = useDispatch();
 
@@ -62,6 +61,7 @@ const AdminRegister = () => {
                     </div>
                     <button className="registerSubmitButton" type="submit">Register</button>
                     <p>Already Registered? Click <a href="/">here</a></p>
+                    <p>Not an Admin? Click <a href="/register">here</a></p>
                 </form>
             </div>
         </div>

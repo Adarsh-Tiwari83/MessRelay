@@ -60,16 +60,16 @@ console.log(complaint);
   return (
     isEditClicked?(
       <>
-      <EditComplaint setIsEditClicked={setIsEditClicked} complaint={complaint}/>
+      {user.role==='Student' && <EditComplaint setIsEditClicked={setIsEditClicked} complaint={complaint}/>}
       </>
   ):(
           <div className="complaintItem">
                 <h1>{complaint?.title}</h1>
                 <p>{complaint?.description}</p>
-                <div className="btnwrapper">
+                {user.role==='Student' && <div className="btnwrapper">
                   <button style={upvoted?{color:'white',backgroundColor:"black"}:{color:'black',backgroundColor:'white'}} onClick={upvoteHandler}>{complaint?.upvotes?.length} 👍</button>
         <button style={downvoted ? { color: 'white', backgroundColor: "black" } : { color: 'black', backgroundColor: 'white' }} onClick={downvoteHandler}>{complaint?.downvotes?.length} 👎</button>
-                </div>
+                </div>}
                 <span>Complaint raised by - {complaint?.student?.name}</span>
                 <div className="btnwrapper">
         {user?._id === complaint?.student?._id && <button onClick={editHandler}>Edit</button>}

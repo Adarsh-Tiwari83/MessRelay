@@ -9,6 +9,7 @@ import { loadUser } from "../../Actions/user";
 
 const ViewComplaints = () => {
     const {complaints}=useSelector(state=>state.complaint);
+    const {user}=useSelector(state=>state.user);
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(loadUser());
@@ -20,7 +21,7 @@ const ViewComplaints = () => {
                 <Complaint key={complaint._id} complaint={complaint}/>
             ))    
         }
-          <Link to="/newComplaint">New Complaint</Link>
+          {user.role==='Student' && <Link to="/newComplaint">New Complaint</Link>}
       </div>
   )
 }

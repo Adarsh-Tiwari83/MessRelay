@@ -3,15 +3,16 @@ const app = express();
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+dotenv.config({ path: "./config/config.env" });
 
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: [process.env.CLIENT_URL],
     credentials: true,
   })
 );
 
-dotenv.config({ path: "./config/config.env" });
+
 
 const { connectDB } = require("./config/database");
 connectDB();
@@ -21,12 +22,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Import the cron job file
-const resetRatingsCronJob = require('./cron-jobs/resetRatings');
+const resetRatingsCronJob = require("./cron-jobs/resetRatings");
 
 // Start the cron job
 resetRatingsCronJob();
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 app.use("/api/v1/student", require("./routes/StudentRoute"));
 app.use("/api/v1/admin", require("./routes/AdminRoute"));

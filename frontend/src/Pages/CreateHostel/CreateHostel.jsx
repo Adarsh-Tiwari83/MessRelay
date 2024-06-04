@@ -125,10 +125,10 @@ const CreateHostel = () => {
         e.preventDefault();
         console.log(formData);
         dispatch(addHostel(formData.name, formData.warden, formData.accountant, formData.messMenu));
-        navigate('/admin');
+        navigate('/');
     };
     const backHandler = () => {
-        navigate('/admin');
+        navigate('/');
     }
 
     return (
@@ -148,7 +148,6 @@ const CreateHostel = () => {
                     <label htmlFor="accountant">Accountant:</label>
                     <input type="text" id="accountant" name="accountant" value={formData.accountant} onChange={handleChange} required />
                 </div>
-                {/* Mess menu input fields */}
                 {Object.entries(formData.messMenu).map(([day, meals]) => (
                     <div key={day}>
                         <h3>{day.charAt(0).toUpperCase() + day.slice(1)}</h3>

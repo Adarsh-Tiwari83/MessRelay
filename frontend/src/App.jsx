@@ -16,33 +16,46 @@ import AdminRegister from './Pages/AdminRegister/AdminRegister'
 import CreateHostel from './Pages/CreateHostel/CreateHostel';
 import UpdateHostel from './Pages/UpdateHostel/UpdateHostel';
 import ViewAllHostels from './Pages/ViewAllHostels/ViewAllHostels'
-import axios from 'axios'
-axios.defaults.baseURL = 'http://localhost:3000';
+import NotFound from './Pages/NotFound/NotFound'
+
 
 function App() {
   const [initialLoad, setInitialLoad] = useState(true);
     const dispatch = useDispatch();
+    const {user}=useSelector(state=>state.user);
+  const { isAuthenticated } = useSelector((state) => state.user);
     useEffect(() => {
         dispatch(loadUser());
         dispatch(viewAllComplaints());
         setInitialLoad(false);
-    }, [])
-  const { isAuthenticated} = useSelector((state) => state.user);
+    }, [dispatch]);
+
+  const renderComponent = (component) => {
+    if (!isAuthenticated) {
+      return component;
+    } else if (user.role !== 'Admin') {
+      return <StudentHome />;
+    } else {
+      return <ViewAllHostels />;
+    } 
+  };
+  
     return (
     initialLoad?<Loader/>:
     (<>
-      <Navbar/>
+      
       <Router>
+            <Navbar />
         <Routes>
-          <Route path="/" element={(isAuthenticated)?<StudentHome/>:<Login />} />
-          <Route path="/register" element={(isAuthenticated) ? <StudentHome /> : <Register/>} />
-          <Route path="/viewComplaints" element={isAuthenticated ? <ViewComplaints /> : <Login/>} />
-          <Route path="/newComplaint" element={isAuthenticated ? < NewComplaint/> : <Login/>} />
-          <Route path="/rateMeal" element={isAuthenticated ? < RateMeal/> : <Login/>} />
-          <Route path="/adminRegister" element={< AdminRegister/> } />
-          <Route path="/admin" element={< ViewAllHostels/> } />
-          <Route path="/addHostel" element={< CreateHostel/> } />
-          <Route path="/updateHostel" element={< UpdateHostel/> } />
+          <Route path="/" element={renderComponent(<Login/>)} />
+          <Route path="/register" element={renderComponent(<Register/>)} />
+          {isAuthenticated && user.role!=='Admin' && <Route path="/viewComplaints" element={<ViewComplaints />} />}
+          {isAuthenticated && user.role==='Student' && <Route path="/newComplaint" element={ < NewComplaint/>} />}
+          {isAuthenticated && user.role === 'Student' && <Route path="/rateMeal" element={< RateMeal/> } />}
+          {!isAuthenticated && <Route path="/adminRegister" element={< AdminRegister/> } />}
+          {isAuthenticated && user.role === 'Admin' && <Route path="/addHostel" element={< CreateHostel/> } />}
+          {isAuthenticated && user.role === 'Admin' && <Route path="/updateHostel" element={< UpdateHostel/> } />}
+          <Route path="*" element={<NotFound/>} />
         </Routes>
       </Router>
 </>)
