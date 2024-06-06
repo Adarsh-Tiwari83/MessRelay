@@ -24,11 +24,12 @@ function App() {
     const dispatch = useDispatch();
     const {user}=useSelector(state=>state.user);
   const { isAuthenticated } = useSelector((state) => state.user);
-    useEffect(() => {
-        dispatch(loadUser());
-        dispatch(viewAllComplaints());
-        setInitialLoad(false);
-    }, [dispatch]);
+  useEffect(() => {
+      dispatch(loadUser());
+      dispatch(viewAllComplaints());
+    
+    setInitialLoad(false);
+  }, [dispatch]);
 
   const renderComponent = (component) => {
     if (!isAuthenticated) {

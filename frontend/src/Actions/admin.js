@@ -13,6 +13,7 @@ import {
   DeleteHostelSuccess,
   DeleteHostelFailure,
 } from "../Reducers/admin";
+import { toast } from "react-toastify";
 
 export const addHostel =
   (name, warden, accountant, messMenu) => async (dispatch) => {
@@ -28,10 +29,11 @@ export const addHostel =
           withCredentials: true,
         }
       );
-      console.log(data.message);
       dispatch(AddHostelSuccess(data.message));
+      toast.success(data.message);
     } catch (error) {
       dispatch(AddHostelFailure(error.response.data.message));
+      toast.error(error.response.data.message);
     }
   };
 
@@ -41,10 +43,11 @@ export const viewAllHostels = () => async (dispatch) => {
     const { data } = await axios.get("/api/v1/admin/hostel", {
       withCredentials: true,
     });
-    console.log(data.hostels);
     dispatch(ViewHostelsSuccess(data.hostels));
+    toast.success(data.message);
   } catch (error) {
     dispatch(ViewHostelsFailure(error.response.data.message));
+    toast.error(error.response.data.message);
   }
 };
 
@@ -62,10 +65,11 @@ export const updateHostel =
           withCredentials: true,
         }
       );
-      console.log(data.message);
       dispatch(UpdateHostelSuccess(data.message));
+      toast.success(data.message);
     } catch (error) {
       dispatch(UpdateHostelFailure(error.response.data.message));
+      toast.error(error.response.data.message);
     }
   };
 
@@ -75,9 +79,10 @@ export const deleteHostel = (id) => async (dispatch) => {
     const { data } = await axios.delete(`/api/v1/admin/hostel/${id}`, {
       withCredentials: true,
     });
-    console.log(data.message);
     dispatch(DeleteHostelSuccess(data.message));
+    toast.success(data.message);
   } catch (error) {
     dispatch(DeleteHostelFailure(error.response.data.message));
+    toast.error(error.response.data.message);
   }
 };

@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 const StudentHome = () => {
   const { user,loading } = useSelector(state => state.user);
   const dispatch = useDispatch();
-  console.log(user);
   useEffect(() => {
     dispatch(loadUser());
     dispatch(viewAllComplaints());

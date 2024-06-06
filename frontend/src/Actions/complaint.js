@@ -21,6 +21,8 @@ import {
   viewAllComplaintsSuccess,
 } from "../Reducers/complaint";
 
+import { toast } from "react-toastify";
+
 export const addComplaint = (title, description) => async (dispatch) => {
   try {
     dispatch(CreateComplaintRequest());
@@ -37,11 +39,12 @@ export const addComplaint = (title, description) => async (dispatch) => {
         withCredentials: true,
       }
     );
-    console.log(data);
     dispatch(CreateComplaintSuccess(data.message));
+    toast.success(data.message);
   } catch (error) {
     console.log(error);
     dispatch(CreateComplaintFailure(error.response.data.message));
+    toast.error(error.response.data.message);
   }
 };
 
@@ -51,7 +54,6 @@ export const viewAllComplaints = () => async (dispatch) => {
     const { data } = await axios.get("/api/v1/student/allComplaints", {
       withCredentials: true,
     });
-    console.log(data);
     dispatch(viewAllComplaintsSuccess(data.complaints));
   } catch (error) {
     dispatch(viewAllComplaintsFailure(error.response.data.message));
@@ -65,8 +67,10 @@ export const deleteComplaint = (id) => async (dispatch) => {
       withCredentials: true,
     });
     dispatch(DeleteComplaintSuccess(data.message));
+    toast.success(data.message);
   } catch (error) {
     dispatch(DeleteComplaintFailure(error.response.data.message));
+    toast.error(error.response.data.message);
   }
 };
 
@@ -76,10 +80,11 @@ export const upvoteComplaint = (id) => async (dispatch) => {
     const { data } = await axios.get(`/api/v1/student/upvoteComplaint/${id}`, {
       withCredentials: true,
     });
-    console.log(data);
     dispatch(upvoteComplaintSuccess(data.message));
+    toast.success(data.message);
   } catch (error) {
     dispatch(upvoteComplaintFailure(error.response.data.message));
+    toast.error(error.response.data.message);
   }
 };
 
@@ -92,10 +97,11 @@ export const downvoteComplaint = (id) => async (dispatch) => {
         withCredentials: true,
       }
     );
-    console.log(data);
     dispatch(downvoteComplaintSuccess(data.message));
+    toast.success(data.message);
   } catch (error) {
     dispatch(downvoteComplaintFailure(error.response.data.message));
+    toast.error(error.response.data.message);
   }
 };
 
@@ -115,10 +121,11 @@ export const editComplaint = (id, title, description) => async (dispatch) => {
         withCredentials: true,
       }
     );
-    console.log(data);
     dispatch(editComplaintSuccess(data.message));
+    toast.success(data.message);
   } catch (error) {
     console.log(error);
     dispatch(editComplaintFailure(error.response.data.message));
+    toast.error(error.response.data.message);
   }
 };

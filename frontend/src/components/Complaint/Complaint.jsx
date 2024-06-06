@@ -56,7 +56,6 @@ const downvoteHandler = async() => {
     }
     else setDownvoted(false);
 },[]);
-console.log(complaint);
   return (
     isEditClicked?(
       <>

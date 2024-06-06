@@ -14,7 +14,7 @@ const ViewComplaints = () => {
     useEffect(() => {
       dispatch(loadUser());
       dispatch(viewAllComplaints());
-    },[])
+    },[dispatch]);
   return (
     <div className="complaintContainer">
       {complaints && complaints.map((complaint)=>(

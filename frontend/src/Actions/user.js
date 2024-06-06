@@ -1,3 +1,4 @@
+
 import axios from "../utils/axiosInstance";
 import {
   LoginRequest,
@@ -16,6 +17,9 @@ import {
   LogoutSuccess,
   LogoutFailure,
 } from "./../Reducers/user";
+import { toast } from "react-toastify";
+
+
 
 export const loginUser = (email, password) => async (dispatch) => {
   try {
@@ -31,8 +35,10 @@ export const loginUser = (email, password) => async (dispatch) => {
       }
     );
     dispatch(LoginSuccess(data.user));
+    toast.success(data.message);
   } catch (error) {
     dispatch(LoginFailure(error.response.data.message));
+    toast.error(error.response.data.message);
   }
 };
 
@@ -50,10 +56,11 @@ export const registerUser =
           withCredentials: true,
         }
       );
-      console.log(data);
       dispatch(RegisterSuccess(data.user));
+      toast.success(data.message);
     } catch (error) {
       dispatch(RegisterFailure(error.response.data.message));
+      toast.error(error.response.data.message);
     }
   };
 
@@ -68,6 +75,7 @@ export const loadUser = () => async (dispatch) => {
     });
 
     dispatch(LoadUserSuccess(data.user));
+  
   } catch (error) {
     dispatch(LoadUserFailure(error.response.data.message));
   }
@@ -90,10 +98,11 @@ export const rateMeal = (mealType, rating) => async (dispatch) => {
         withCredentials: true,
       }
     );
-    console.log(data);
     dispatch(rateMealSuccess(data.message));
+    toast.success(data.message);
   } catch (error) {
     dispatch(rateMealFailure(error.response.data.message));
+    toast.error(error.response.data.message);
   }
 };
 
@@ -106,10 +115,10 @@ export const logoutUser = () => async (dispatch) => {
       },
       withCredentials: true,
     });
-    console.log(data);
-    window.location.reload();
     dispatch(LogoutSuccess(data.message));
+    toast.success(data.message);
   } catch (error) {
     dispatch(LogoutFailure(error.response.data.message));
+    toast.error(error.response.data.message);
   }
 };

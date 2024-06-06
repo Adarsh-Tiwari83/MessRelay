@@ -51,7 +51,7 @@ exports.register = async (req, res) => {
       token,
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ success: false, message: error.message});
   }
 };
 
@@ -75,6 +75,7 @@ exports.login = async (req, res) => {
     };
     res.status(200).cookie("token", token, options).json({
       success: true,
+      message: "Logged in successfully",
       user,
       token,
     });
