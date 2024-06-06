@@ -11,14 +11,15 @@ MessRelay is a comprehensive mess management system built on the MERN stack. It 
 - **Admin Panel**: Admins have full control over hostel details, including adding, updating, and deleting hostel information.
 - **Meal Rating**: Students can rate today's meal, providing valuable feedback for mess management.
 
+
 <h2 style="text-align: center;">Student Role Demo</h2>
 <p align="center">
-  <img src="https://github.com/Adarsh-Tiwari83/MessRelay/raw/main/assets/Student.gif" alt="Student GIF">
+  <img src="https://github.com/Adarsh-Tiwari83/MessRelay/blob/master/assets/Student.gif" alt="Student GIF">
 </p>
 
 <h2 style="text-align: center;">Admin Role Demo</h2>
 <p align="center">
-  <img src="https://github.com/Adarsh-Tiwari83/MessRelay/raw/main/assets/Admin.gif" alt="Admin GIF">
+  <img src="https://github.com/Adarsh-Tiwari83/MessRelay/blob/master/assets/Admin.gif" alt="Admin GIF">
 </p>
 
 
@@ -38,7 +39,7 @@ MessRelay is a comprehensive mess management system built on the MERN stack. It 
 
 ## Getting Started
 
-1. Clone the repository: `git clone https://github.com/your-username/MessRelay.git`
+1. Clone the repository: `git clone https://github.com/Adarsh-Tiwari83/MessRelay.git`
 2. Navigate to the project directory: `cd MessRelay`
 3. Install dependencies:
    - For frontend: `cd client && npm install`
