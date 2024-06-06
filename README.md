@@ -12,10 +12,10 @@ MessRelay is a comprehensive mess management system built on the MERN stack. It 
 - **Meal Rating**: Students can rate today's meal, providing valuable feedback for mess management.
 
 ##Student Role Demo
- ![Student GIF](https://github.com/Adarsh-Tiwari83/MessRelay/assets/Student.gif)
+ ![Student GIF](https://github.com/Adarsh-Tiwari83/MessRelay/blob/master/assets/Student.gif)
 
 ##Admin Role Demo
-  ![Admin GIF](https://github.com/Adarsh-Tiwari83/MessRelay/assets/Admin.gif)
+  ![Admin GIF](https://github.com/Adarsh-Tiwari83/MessRelay/blob/master/assets/Admin.gif)
 
 ## Contributor
 
