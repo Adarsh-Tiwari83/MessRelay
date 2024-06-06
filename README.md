@@ -11,11 +11,16 @@ MessRelay is a comprehensive mess management system built on the MERN stack. It 
 - **Admin Panel**: Admins have full control over hostel details, including adding, updating, and deleting hostel information.
 - **Meal Rating**: Students can rate today's meal, providing valuable feedback for mess management.
 
-##Student Role Demo
- ![Student GIF](https://github.com/Adarsh-Tiwari83/MessRelay/blob/master/assets/Student.gif)
+<h2 style="text-align: center;">Student Role Demo</h2>
+<p align="center">
+  <img src="https://github.com/Adarsh-Tiwari83/MessRelay/raw/main/assets/Student.gif" alt="Student GIF">
+</p>
 
-##Admin Role Demo
-  ![Admin GIF](https://github.com/Adarsh-Tiwari83/MessRelay/blob/master/assets/Admin.gif)
+<h2 style="text-align: center;">Admin Role Demo</h2>
+<p align="center">
+  <img src="https://github.com/Adarsh-Tiwari83/MessRelay/raw/main/assets/Admin.gif" alt="Admin GIF">
+</p>
+
 
 ## Contributor
 
