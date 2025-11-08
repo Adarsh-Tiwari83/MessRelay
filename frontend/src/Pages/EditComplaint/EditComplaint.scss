@@ -1,74 +1,278 @@
 .editContainer {
   max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+  margin: 40px auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  animation: fadeInUp 0.6s ease-out;
+  position: relative;
+  overflow: hidden;
 
-.editContainer p {
-  text-align: center;
-  color: #333;
-  font-size: 20px;
-  margin-bottom: 20px;
-}
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #000000 0%, #333333 50%, #000000 100%);
+    animation: shimmer 3s ease-in-out infinite;
+  }
 
-.editBackButton {
-  display: block;
-  margin: 0 auto 20px auto;
-  padding: 10px 20px;
-  background-color: #6c757d;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+  @keyframes shimmer {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
 
-.editBackButton:hover {
-  background-color: #5a6268;
-}
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-.editFormContainer {
-  display: flex;
-  justify-content: center;
-}
+  p {
+    text-align: center;
+    color: #000000;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+    animation: slideIn 0.8s ease-out;
 
-form {
-  width: 100%;
-  max-width: 600px;
-}
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #000000;
+      border-radius: 2px;
+      animation: expandWidth 0.8s ease-out 0.3s backwards;
+    }
 
-.editFormGroup {
-  margin-bottom: 20px;
-}
+    @keyframes expandWidth {
+      from {
+        width: 0;
+      }
+      to {
+        width: 80px;
+      }
+    }
 
-.editFormGroup input,
-.editFormGroup textarea {
-  width: calc(100% - 20px);
-  padding: 10px;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  margin: 0 10px;
-}
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
 
-.editFormGroup textarea {
-  height: 100px;
-}
+  .editBackButton {
+    display: block;
+    margin: 0 auto 30px auto;
+    padding: 12px 32px;
+    background-color: transparent;
+    color: #000000;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
 
-.editSubmitButton {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #000000;
+      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: -1;
+    }
 
-.editSubmitButton:hover {
-  background-color: #218838;
+    &:hover {
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+
+      &::before {
+        left: 0;
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .editFormContainer {
+    display: flex;
+    justify-content: center;
+    animation: fadeInScale 0.8s ease-out;
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+
+  form {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .editFormGroup {
+    margin-bottom: 24px;
+    animation: fadeInUp 0.6s ease-out backwards;
+
+    @for $i from 1 through 2 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.1}s;
+      }
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #333;
+      background: #ffffff;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      outline: none;
+
+      &::placeholder {
+        color: #999;
+        font-weight: 400;
+      }
+
+      &:focus {
+        border-color: #000000;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+
+      &:hover {
+        border-color: rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    textarea {
+      height: 120px;
+      resize: vertical;
+      min-height: 100px;
+      line-height: 1.6;
+    }
+  }
+
+  .editSubmitButton {
+    display: block;
+    width: 100%;
+    padding: 16px 32px;
+    background-color: transparent;
+    color: #000000;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #000000;
+      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: -1;
+    }
+
+    &:hover {
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+      &::before {
+        left: 0;
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  // Responsive design
+  @media (max-width: 768px) {
+    margin: 20px;
+    padding: 30px 20px;
+
+    p {
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+    }
+
+    .editBackButton {
+      padding: 10px 24px;
+      font-size: 0.9rem;
+    }
+
+    .editFormGroup {
+      input,
+      textarea {
+        padding: 14px 16px;
+        font-size: 0.95rem;
+      }
+    }
+
+    .editSubmitButton {
+      padding: 14px 24px;
+      font-size: 1rem;
+    }
+  }
 }

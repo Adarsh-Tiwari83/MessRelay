@@ -9,10 +9,16 @@ const AdminRegister = () => {
     const [name, setName] = useState('');
     const dispatch = useDispatch();
 
-    const formHandler = (e) => {
+    const formHandler = async (e) => {
         e.preventDefault();
-        dispatch(registerUser(name, email, password, 'Admin'));
-        window.location.href = '/admin';
+        try {
+            await dispatch(registerUser(name, email, password, 'Admin'));
+            // Only redirect on success
+            window.location.href = '/admin';
+        } catch (error) {
+            console.error('Registration failed:', error);
+            // Error will be shown via toast from the action
+        }
     };
 
     return (

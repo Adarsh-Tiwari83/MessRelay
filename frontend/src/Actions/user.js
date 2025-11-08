@@ -1,4 +1,3 @@
-
 import axios from "../utils/axiosInstance";
 import {
   LoginRequest,
@@ -18,8 +17,6 @@ import {
   LogoutFailure,
 } from "./../Reducers/user";
 import { toast } from "react-toastify";
-
-
 
 export const loginUser = (email, password) => async (dispatch) => {
   try {
@@ -75,7 +72,6 @@ export const loadUser = () => async (dispatch) => {
     });
 
     dispatch(LoadUserSuccess(data.user));
-  
   } catch (error) {
     dispatch(LoadUserFailure(error.response.data.message));
   }
