@@ -1,33 +1,178 @@
 // StudentHome.scss
 
 .container {
-  margin: 20px;
+  position: relative;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .innerContainer {
-  background-color: #f7f7f7;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #000000, #ffffff, #000000);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
 }
 
 h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  position: relative;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: -0.03em;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 4px;
+    background: #000000;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &:hover::after {
+    width: 250px;
+  }
 }
 
 .tableContainer {
-  margin-top: 20px;
+  margin-top: 2rem;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
 }
 
 .tableContainer a {
-  display: block;
-  margin-bottom: 10px;
-  color: #007bff; /* Link color */
+  display: inline-block;
+  margin: 0.75rem 1rem 0.75rem 0;
+  padding: 1rem 2rem;
+  background: transparent;
+  border: 2px solid #000000;
+  color: #000000;
+  font-weight: 600;
+  font-size: 1.2rem;
   text-decoration: none;
-  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.01em;
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+  }
+
+  &:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+
+    &::before {
+      left: 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
 }
 
-.tableContainer a:hover {
-  text-decoration: underline;
+@media (max-width: 768px) {
+  .container {
+    margin: 1rem;
+  }
+
+  .innerContainer {
+    padding: 2rem 1.5rem;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+
+    &::after {
+      width: 180px;
+    }
+
+    &:hover::after {
+      width: 180px;
+    }
+  }
+
+  .tableContainer {
+    text-align: center;
+  }
+
+  .tableContainer a {
+    display: block;
+    margin: 0.5rem 0;
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .innerContainer {
+    padding: 1.5rem 1rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .tableContainer a {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }

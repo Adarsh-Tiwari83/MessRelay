@@ -1,66 +1,256 @@
+// Login.scss
+
 .loginContainer {
   max-width: 500px;
   margin: 40px auto;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  animation: fadeInUp 0.6s ease-out;
+  position: relative;
+  overflow: hidden;
 
-.loginContainer h1 {
-  color: #333;
-  margin-bottom: 20px;
-}
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #000000 0%, #333333 50%, #000000 100%);
+    animation: shimmer 3s ease-in-out infinite;
+  }
 
-.loginFormContainer {
-  display: flex;
-  justify-content: center;
-}
+  @keyframes shimmer {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
 
-form {
-  width: 100%;
-  max-width: 400px;
-}
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-.loginFormGroup {
-  margin-bottom: 20px;
-}
+  h1 {
+    color: #000000;
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+    position: relative;
+    animation: slideIn 0.8s ease-out;
 
-.loginFormGroup input {
-  width: calc(100% - 20px);
-  padding: 10px;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  margin: 0 10px;
-}
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #000000;
+      border-radius: 2px;
+      animation: expandWidth 0.8s ease-out 0.3s backwards;
+    }
 
-.loginSubmitButton {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+    @keyframes expandWidth {
+      from {
+        width: 0;
+      }
+      to {
+        width: 80px;
+      }
+    }
 
-.loginSubmitButton:hover {
-  background-color: #0056b3;
-}
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
 
-.loginContainer p {
-  margin-top: 10px;
-  color: #333;
-}
+  .loginFormContainer {
+    display: flex;
+    justify-content: center;
+    animation: fadeInScale 0.8s ease-out;
 
-.loginContainer a {
-  color: #007bff;
-  text-decoration: none;
-}
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
 
-.loginContainer a:hover {
-  text-decoration: underline;
+  form {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .loginFormGroup {
+    margin-bottom: 24px;
+    animation: fadeInUp 0.6s ease-out backwards;
+
+    @for $i from 1 through 2 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.1}s;
+      }
+    }
+
+    input {
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #333;
+      background: #ffffff;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      outline: none;
+      box-sizing: border-box;
+
+      &::placeholder {
+        color: #999;
+        font-weight: 400;
+      }
+
+      &:focus {
+        border-color: #000000;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+
+      &:hover {
+        border-color: rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
+  .loginSubmitButton {
+    display: block;
+    width: 100%;
+    padding: 16px 32px;
+    background-color: transparent;
+    color: #000000;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #000000;
+      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: -1;
+    }
+
+    &:hover {
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+      &::before {
+        left: 0;
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  p {
+    margin-top: 20px;
+    color: #555;
+    font-size: 0.95rem;
+    text-align: center;
+
+    a {
+      color: #000000;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #000000;
+        transition: width 0.3s ease;
+      }
+
+      &:hover {
+        color: #000000;
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  // Responsive design
+  @media (max-width: 768px) {
+    margin: 20px;
+    padding: 30px 20px;
+
+    h1 {
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+    }
+
+    .loginFormGroup {
+      input {
+        padding: 14px 16px;
+        font-size: 0.95rem;
+      }
+    }
+
+    .loginSubmitButton {
+      padding: 14px 24px;
+      font-size: 1rem;
+    }
+  }
 }

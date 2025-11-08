@@ -1,24 +1,145 @@
 .not-found {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  text-align: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: #ffffff;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #000000, #ffffff, #000000);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  h1 {
+    position: relative;
+    font-size: 6rem;
+    font-weight: 900;
+    color: #000000;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.04em;
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 4px;
+      background: #000000;
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &:hover::after {
+      width: 200px;
+    }
+  }
+
+  p {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #666666;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+    max-width: 500px;
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+    letter-spacing: -0.01em;
+  }
+
+  a {
+    display: inline-block;
+    padding: 1.25rem 2.5rem;
+    background: transparent;
+    border: 2px solid #000000;
+    color: #000000;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.02em;
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;
+
+    &:hover {
+      background: #000000;
+      color: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+      transform: translateY(-1px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+
+      &::after {
+        width: 150px;
+      }
+
+      &:hover::after {
+        width: 150px;
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      padding: 0 1rem;
+    }
+
+    a {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
 }
 
-.not-found h1 {
-  font-size: 48px;
-  margin-bottom: 16px;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.not-found p {
-  font-size: 24px;
-  margin-bottom: 24px;
-}
-
-.not-found a {
-  text-decoration: none;
-  color: #007bff;
-  font-size: 20px;
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }

@@ -1,27 +1,99 @@
 // ViewComplaints.scss
 
 .complaintContainer {
-  margin: 20px auto;
-  padding: 20px;
-  max-width: 800px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 3rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #000000, #ffffff, #000000);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
 }
 
 .complaintContainer a {
   display: block;
   text-align: center;
-  margin: 20px auto;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #ffffff;
-  border-radius: 5px;
+  margin: 3rem auto 0;
+  padding: 1.25rem 2.5rem;
+  background: transparent;
+  border: 2px solid #000000;
+  color: #000000;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border-radius: 8px;
   text-decoration: none;
-  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.02em;
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
   width: fit-content;
+
+  &:hover {
+    background: #000000;
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
 }
 
-.complaintContainer a:hover {
-  background-color: #0056b3;
+@media (max-width: 768px) {
+  .complaintContainer {
+    margin: 1rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .complaintContainer a {
+    margin: 2rem auto 0;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .complaintContainer {
+    padding: 1.5rem 1rem;
+  }
+
+  .complaintContainer a {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }

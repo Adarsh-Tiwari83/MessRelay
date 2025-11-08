@@ -1,4 +1,4 @@
-import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Login from './Pages/Login/Login'
 import './App.scss'
@@ -21,15 +21,29 @@ import NotFound from './Pages/NotFound/NotFound'
 
 function App() {
   const [initialLoad, setInitialLoad] = useState(true);
-    const dispatch = useDispatch();
-    const {user}=useSelector(state=>state.user);
+  const dispatch = useDispatch();
+  const { user } = useSelector(state => state.user);
   const { isAuthenticated } = useSelector((state) => state.user);
+
   useEffect(() => {
-      dispatch(loadUser());
-      dispatch(viewAllComplaints());
-    
-    setInitialLoad(false);
+    // Only check for existing session if we're not on public pages
+    const publicPaths = ['/', '/register', '/adminRegister'];
+    const currentPath = window.location.pathname;
+
+    if (!publicPaths.includes(currentPath)) {
+      dispatch(loadUser()).finally(() => {
+        setInitialLoad(false);
+      });
+    } else {
+      setInitialLoad(false);
+    }
   }, [dispatch]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      dispatch(viewAllComplaints());
+    }
+  }, [dispatch, isAuthenticated]);
 
   const renderComponent = (component) => {
     if (!isAuthenticated) {
@@ -38,28 +52,28 @@ function App() {
       return <StudentHome />;
     } else {
       return <ViewAllHostels />;
-    } 
+    }
   };
-  
-    return (
-    initialLoad?<Loader/>:
-    (<>
-      
-      <Router>
-            <Navbar />
-        <Routes>
-          <Route path="/" element={renderComponent(<Login/>)} />
-          <Route path="/register" element={renderComponent(<Register/>)} />
-          {isAuthenticated && user.role!=='Admin' && <Route path="/viewComplaints" element={<ViewComplaints />} />}
-          {isAuthenticated && user.role==='Student' && <Route path="/newComplaint" element={ < NewComplaint/>} />}
-          {isAuthenticated && user.role === 'Student' && <Route path="/rateMeal" element={< RateMeal/> } />}
-          {!isAuthenticated && <Route path="/adminRegister" element={< AdminRegister/> } />}
-          {isAuthenticated && user.role === 'Admin' && <Route path="/addHostel" element={< CreateHostel/> } />}
-          {isAuthenticated && user.role === 'Admin' && <Route path="/updateHostel" element={< UpdateHostel/> } />}
-          <Route path="*" element={<NotFound/>} />
-        </Routes>
-      </Router>
-</>)
+
+  return (
+    initialLoad ? <Loader /> :
+      (<>
+
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={renderComponent(<Login />)} />
+            <Route path="/register" element={renderComponent(<Register />)} />
+            {isAuthenticated && user.role !== 'Admin' && <Route path="/viewComplaints" element={<ViewComplaints />} />}
+            {isAuthenticated && user.role === 'Student' && <Route path="/newComplaint" element={< NewComplaint />} />}
+            {isAuthenticated && user.role === 'Student' && <Route path="/rateMeal" element={< RateMeal />} />}
+            {!isAuthenticated && <Route path="/adminRegister" element={< AdminRegister />} />}
+            {isAuthenticated && user.role === 'Admin' && <Route path="/addHostel" element={< CreateHostel />} />}
+            {isAuthenticated && user.role === 'Admin' && <Route path="/updateHostel" element={< UpdateHostel />} />}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Router>
+      </>)
   )
 }
 
