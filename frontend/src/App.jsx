@@ -26,11 +26,9 @@ function App() {
   const { isAuthenticated } = useSelector((state) => state.user);
 
   useEffect(() => {
-    // Only check for existing session if we're not on public pages
-    const publicPaths = ['/', '/register', '/adminRegister'];
-    const currentPath = window.location.pathname;
-
-    if (!publicPaths.includes(currentPath)) {
+    // Only load user if token exists in localStorage
+    const token = localStorage.getItem("token");
+    if (token) {
       dispatch(loadUser()).finally(() => {
         setInitialLoad(false);
       });

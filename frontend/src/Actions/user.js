@@ -31,6 +31,7 @@ export const loginUser = (email, password) => async (dispatch) => {
         withCredentials: true,
       }
     );
+    localStorage.setItem("token", data.token);
     dispatch(LoginSuccess(data.user));
     toast.success(data.message);
   } catch (error) {
@@ -53,6 +54,7 @@ export const registerUser =
           withCredentials: true,
         }
       );
+      localStorage.setItem("token", data.token);
       dispatch(RegisterSuccess(data.user));
       toast.success(data.message);
     } catch (error) {
@@ -73,7 +75,10 @@ export const loadUser = () => async (dispatch) => {
 
     dispatch(LoadUserSuccess(data.user));
   } catch (error) {
-    dispatch(LoadUserFailure(error.response.data.message));
+    dispatch(
+      LoadUserFailure(error.response?.data?.message || "Not authenticated")
+    );
+    // Silently fail - this is expected when user is not logged in
   }
 };
 
@@ -111,6 +116,7 @@ export const logoutUser = () => async (dispatch) => {
       },
       withCredentials: true,
     });
+    localStorage.removeItem("token");
     dispatch(LogoutSuccess(data.message));
     toast.success(data.message);
   } catch (error) {
